@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talk Track · Quiz de Inglês A1-A2</title>
+  <meta name="description" content="Quiz de inglês básico focado em conversação, com 30 perguntas de A1 a A2." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark">✦</span>
+        <span class="brand-name">Talk Track</span>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Alternar tema claro/escuro">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+        </svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <main id="app" class="app">
+
+      <!-- TELA INICIAL -->
+      <section id="start-screen" class="screen start-screen">
+        <p class="eyebrow">Inglês para o dia a dia · Nível A1–A2</p>
+        <h1 class="title">Pratique conversas reais em inglês</h1>
+        <p class="subtitle">
+          30 perguntas curtas com diálogos simples: cumprimentar, pedir algo,
+          perguntar as horas, pedir direções e muito mais.
+        </p>
+
+        <div class="postcard">
+          <div class="postcard-line"><span class="label">De</span><span>A1 · Iniciante</span></div>
+          <div class="postcard-line"><span class="label">Para</span><span>A2 · Pré-intermediário</span></div>
+          <div class="postcard-line"><span class="label">Foco</span><span>Conversação</span></div>
+          <div class="postcard-stamp">30 Q</div>
+        </div>
+
+        <button id="start-btn" class="btn btn-primary btn-full">Começar quiz</button>
+      </section>
+
+      <!-- TELA DO QUIZ -->
+      <section id="quiz-screen" class="screen quiz-screen hidden">
+        <div class="progress-wrap">
+          <div class="progress-track">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <span id="progress-label" class="progress-label">Pergunta 1 de 30</span>
+        </div>
+
+        <div class="question-card">
+          <span id="category-tag" class="category-tag">Cumprimentos</span>
+          <p id="dialogue" class="dialogue hidden"></p>
+          <h2 id="question-text" class="question-text">Pergunta</h2>
+
+          <ul id="options-list" class="options-list hidden" role="list"></ul>
+
+          <div id="open-answer-wrap" class="open-answer-wrap hidden">
+            <textarea
+              id="open-answer-input"
+              class="open-answer-input"
+              rows="3"
+              placeholder="Escreva sua resposta em inglês..."
+            ></textarea>
+            <button id="reveal-answer-btn" type="button" class="btn btn-ghost btn-full">
+              Ver resposta esperada
+            </button>
+          </div>
+
+          <p id="feedback" class="feedback hidden" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="nav-buttons">
+          <button id="prev-btn" class="btn btn-ghost" disabled>Anterior</button>
+          <button id="next-btn" class="btn btn-primary" disabled>Próxima</button>
+        </div>
+      </section>
+
+      <!-- TELA DE RESULTADO -->
+      <section id="result-screen" class="screen result-screen hidden">
+        <p class="eyebrow">Quiz concluído</p>
+        <h1 class="title">Seu carimbo de viagem ✦</h1>
+
+        <div class="result-ring-wrap">
+          <svg class="result-ring" viewBox="0 0 120 120">
+            <circle class="ring-track" cx="60" cy="60" r="54"></circle>
+            <circle id="result-ring-fill" class="ring-fill" cx="60" cy="60" r="54"></circle>
+          </svg>
+          <div class="result-ring-center">
+            <span id="result-percentage" class="result-percentage">0%</span>
+            <span id="result-score" class="result-score">0 / 30</span>
+          </div>
+        </div>
+
+        <p class="result-level-label">Nível estimado</p>
+        <p id="result-level" class="result-level">A1</p>
+
+        <p id="result-open-note" class="result-open-note"></p>
+
+        <button id="restart-btn" class="btn btn-primary btn-full">Refazer quiz</button>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>Feito para praticar inglês conversacional · A1–A2</p>
+    </footer>
+  </div>
+
+  <script src="js/data/questions.js"></script>
+  <script src="js/models/QuizModel.js"></script>
+  <script src="js/views/QuizView.js"></script>
+  <script src="js/controllers/QuizController.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

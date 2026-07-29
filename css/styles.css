@@ -1,0 +1,473 @@
+/* ============================================================
+   DESIGN TOKENS
+   Tema: "postal de viagem" — remete a aprender inglês para
+   se comunicar em viagens/conversas do dia a dia.
+   ============================================================ */
+:root {
+  --bg: #FAF6EF;
+  --surface: #FFFFFF;
+  --surface-soft: #F2ECDF;
+  --ink: #22282C;
+  --ink-soft: #5B6570;
+  --border: #E4DBC8;
+
+  --primary: #1F6E78;
+  --primary-ink: #FFFFFF;
+  --accent: #E3A73B;
+  --success: #3F9142;
+  --success-bg: #E8F3E7;
+  --error: #C1453A;
+  --error-bg: #FBEAE7;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-card: 0 12px 32px -16px rgba(34, 40, 44, 0.25);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #14181B;
+  --surface: #1D2226;
+  --surface-soft: #262C30;
+  --ink: #F2EFE9;
+  --ink-soft: #A7AFAE;
+  --border: #333B40;
+
+  --primary: #4FB8C4;
+  --primary-ink: #10262A;
+  --accent: #F0C36B;
+  --success: #6FCB74;
+  --success-bg: #1E3323;
+  --error: #E58A7F;
+  --error-bg: #3A2320;
+
+  --shadow-card: 0 12px 32px -16px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+button { font-family: inherit; }
+.hidden { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ============================================================
+   LAYOUT (mobile-first)
+   ============================================================ */
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100%;
+  padding: 20px 20px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px 24px;
+}
+
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand-mark { color: var(--accent); font-size: 20px; }
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.theme-toggle .icon { width: 18px; height: 18px; }
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+.app { flex: 1; display: flex; }
+.screen { flex: 1; display: flex; flex-direction: column; width: 100%; }
+
+.app-footer {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 12px;
+  padding-top: 28px;
+}
+
+/* ============================================================
+   TELA INICIAL
+   ============================================================ */
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0 0 10px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0 0 24px;
+}
+
+.postcard {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.postcard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg, transparent, transparent 8px, var(--accent) 8px, var(--accent) 10px
+  );
+  opacity: 0.06;
+}
+.postcard-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.postcard-line:last-of-type { border-bottom: none; }
+.postcard-line .label {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.postcard-stamp {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 52px;
+  height: 52px;
+  border: 2px dashed var(--accent);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--accent);
+  transform: rotate(8deg);
+}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.btn {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.15s ease;
+}
+.btn:active { transform: scale(0.98); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-full { width: 100%; }
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-ink);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+.nav-buttons .btn { flex: 1; }
+
+/* ============================================================
+   TELA DO QUIZ
+   ============================================================ */
+.progress-wrap { margin-bottom: 18px; }
+.progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.progress-label {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.question-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 20px 20px;
+  box-shadow: var(--shadow-card);
+  flex: 1;
+}
+/* "rabinho" de balão de fala, referência ao tema de conversação */
+.question-card::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  bottom: -9px;
+  width: 20px;
+  height: 20px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transform: rotate(45deg);
+  border-radius: 0 0 4px 0;
+}
+
+.category-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.dialogue {
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.question-text {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 20px;
+}
+
+.options-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
+}
+.option-btn:hover:not(:disabled) { border-color: var(--primary); }
+.option-btn:active:not(:disabled) { transform: scale(0.99); }
+.option-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.option-btn:disabled { cursor: default; }
+
+.option-btn--sentence {
+  line-height: 1.45;
+  font-weight: 400;
+  font-size: 14.5px;
+}
+
+.option-btn.correct {
+  background: var(--success-bg);
+  border-color: var(--success);
+  color: var(--success);
+  font-weight: 700;
+}
+.option-btn.incorrect {
+  background: var(--error-bg);
+  border-color: var(--error);
+  color: var(--error);
+  font-weight: 700;
+}
+
+.open-answer-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.open-answer-input {
+  width: 100%;
+  resize: vertical;
+  min-height: 84px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.open-answer-input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.open-answer-input:disabled {
+  opacity: 0.75;
+}
+
+.feedback {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.feedback.correct { background: var(--success-bg); color: var(--success); }
+.feedback.incorrect { background: var(--error-bg); color: var(--error); }
+.feedback.neutral {
+  background: var(--surface-soft);
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   TELA DE RESULTADO
+   ============================================================ */
+.result-screen { align-items: center; text-align: center; }
+
+.result-ring-wrap {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 12px auto 20px;
+}
+.result-ring { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring-track {
+  fill: none;
+  stroke: var(--surface-soft);
+  stroke-width: 10;
+}
+.ring-fill {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+.result-ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.result-percentage {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+}
+.result-score {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+.result-level-label {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 8px 0 4px;
+}
+.result-level {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+
+.result-open-note {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 24px;
+}
+
+/* ============================================================
+   TELAS MAIORES (tablet/desktop) — melhora respiro, mantém
+   o mesmo layout central em coluna única (mobile-first)
+   ============================================================ */
+@media (min-width: 640px) {
+  .page { padding: 32px 24px 48px; }
+  .title { font-size: 34px; }
+  .question-text { font-size: 23px; }
+}
