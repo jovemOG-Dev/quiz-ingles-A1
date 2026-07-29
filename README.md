@@ -1,9 +1,5 @@
 # Talk Track — Quiz de Inglês A1-A2
 
-🔗 **Acesse o quiz publicado:** [jovemog-dev.github.io/quiz-ingles-A1/](https://jovemog-dev.github.io/quiz-ingles-A1/)
-
-## Finalidade
-
 Ferramenta de prática de **inglês conversacional básico** (A1-A2):
 foco em construir frases simples, interpretar pequenos diálogos e
 escolher/produzir respostas adequadas para situações reais do dia a
@@ -49,7 +45,7 @@ avançado) com base no percentual de acertos das questões objetivas.
 
 O quiz já está publicado e pode ser usado diretamente pelo link:
 
-👉 **https://jovemog-dev.github.io/quiz-ingles-A1/**
+🔗 **https://jovemog-dev.github.io/quiz-ingles-A1/**
 
 Não é necessário instalar nada — funciona em qualquer navegador
 moderno, desktop ou mobile.
