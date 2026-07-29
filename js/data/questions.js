@@ -18,8 +18,8 @@ const QUESTIONS = [
     category: "Recepção",
     dialogue: "Visitor: Good morning! I have an appointment with Ms. Costa.",
     question: "Receptionist: Good morning! ___ a seat, please.",
-    options: ["Have", "Take", "Do", "Make"],
-    answer: 1,
+    options: ["Take", "Do", "Make", "Give"], // Correção 3: "Have" removido
+    answer: 0, // Índice atualizado para "Take"
     explanation: "'Take a seat' é a forma comum de convidar alguém a sentar."
   },
   {
@@ -41,8 +41,8 @@ const QUESTIONS = [
     category: "Recepção",
     dialogue: "Visitor: Can I use the restroom?",
     question: "Receptionist: Sure, it's ___ the hallway, on the left.",
-    options: ["in", "at", "on", "down"],
-    answer: 3,
+    options: ["down", "up", "on", "to"], // Correção 2: "in" removido
+    answer: 0, // Índice atualizado para "down"
     explanation: "'Down the hallway' = ao longo do corredor."
   },
   {
@@ -108,8 +108,8 @@ const QUESTIONS = [
   {
     type: "mc",
     category: "Direções",
-    dialogue: "A: How do I get to the parking lot?",
-    question: "B: Go ___ the stairs and turn right.",
+    dialogue: "A: How do I get to the parking lot? Is it downstairs?", // Correção 1: Contexto adicionado
+    question: "B: Yes, go ___ the stairs and turn right.", // Correção 1: Ancoragem com "Yes,"
     options: ["down", "up", "on", "at"],
     answer: 0,
     explanation: "'Go down the stairs' = descer as escadas."
@@ -133,8 +133,8 @@ const QUESTIONS = [
     category: "Oferecendo algo",
     dialogue: "A: Would you like something to drink?",
     question: "B: Yes, ___ coffee, please.",
-    options: ["some", "a", "an", "any"],
-    answer: 1,
+    options: ["a", "an", "any", "the"], // Correção 4: "some" trocado por "the" e opções reorganizadas
+    answer: 0, // Índice atualizado para "a"
     explanation: "'A coffee' (uma xícara de café) é contável nesse contexto."
   },
   {
@@ -266,7 +266,7 @@ const QUESTIONS = [
     question: "What does the visitor need to do first?",
     options: [
       "Go straight to the meeting.",
-      "Sign in and get a badge.",
+      "Sign the form and get a badge.", // Correção 6: Alinhamento de vocabulário
       "Leave the building.",
       "Call the manager."
     ],
@@ -292,7 +292,7 @@ const QUESTIONS = [
     category: "Pedindo desculpas",
     dialogue: "A: Sorry, I'm a little late.",
     question: "B: That's ___.",
-    options: ["okay", "ok fine", "no problem thanks", "welcome"],
+    options: ["okay", "welcome", "sorry", "please"], // Correção 5: Distratores padronizados
     answer: 0,
     explanation: "'That's okay' é uma resposta simples e comum a um pedido de desculpas."
   },
