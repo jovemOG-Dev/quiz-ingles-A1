@@ -1,7 +1,5 @@
 # Talk Track — Quiz de Inglês A1-A2
 
-## Finalidade
-
 Ferramenta de prática de **inglês conversacional básico** (A1-A2):
 foco em construir frases simples, interpretar pequenos diálogos e
 escolher/produzir respostas adequadas para situações reais do dia a
